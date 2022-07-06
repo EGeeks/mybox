@@ -6,7 +6,8 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-  ##OEROOT## \
+  ##OEROOT##/meta \
+  ##OEROOT##/meta-poky \
   ##OEROOT##/../meta-openembedded/meta-oe \
   ##OEROOT##/../meta-sunxi \
   ##OEROOT##/../meta-box \
