@@ -1,14 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: zbox-hd
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,13 +21,26 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Initialization environment
+        run: |
+            sudo apt install gawk wget git diffstat unzip texinfo gcc \
+            build-essential chrpath socat cpio python3 python3-pip python3-pexpect \
+            xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa \
+            libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev zstd liblz4-tool
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Setup building environment
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+            echo "work dir: $GITHUB_WORKSPACE"
+            mkdir -p ${GITHUB_WORKSPACE}/../yocto-build-cache/images
+            cd ${GITHUB_WORKSPACE}
+
+            export MACHINE=zbox-hd
+            export TEMPLATECONF=${GITHUB_WORKSPACE}/meta-box/conf
+  
+            cd ${GITHUB_WORKSPACE}
+            . ./poky/oe-init-build-env ${GITHUB_WORKSPACE}/../yocto-build-cache/images/zbox-hd
+            bitbake -c do_image_complete image-zbox
