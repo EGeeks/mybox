@@ -1,17 +1,24 @@
 SUMMARY = "Minimal image for Radxa boards"
 
-IMAGE_FEATURES += "splash"
+LICENSE = "close"
 
-LICENSE = "MIT"
+inherit image extrausers
 
-inherit core-image features_check extrausers
+# Distro can override the following VIRTUAL-RUNTIME providers:
+VIRTUAL-RUNTIME_dev_manager ?= "busybox-mdev"
+VIRTUAL-RUNTIME_login_manager ?= "busybox"
+VIRTUAL-RUNTIME_init_manager ?= "busybox"
+VIRTUAL-RUNTIME_initscripts ?= "initscripts"
 
-# let's make sure we have a good image..
-REQUIRED_DISTRO_FEATURES = "pam systemd"
-
-CORE_IMAGE_BASE_INSTALL += " \
-    kernel-modules \
+IMAGE_INSTALL = " \
+	base-files \
+	shadow \
+	${VIRTUAL-RUNTIME_login_manager} \
+	${VIRTUAL-RUNTIME_init_manager} \
+	${VIRTUAL-RUNTIME_dev_manager} \
+	${VIRTUAL-RUNTIME_initscripts} \
+	modutils-initscripts \
+	init-ifupdown \
 "
 
-EXTRA_USERS_PARAMS = "usermod -P rock root;"
-EXTRA_USERS_PARAMS += "useradd -P rock rock;"
+IMAGE_LINGUAS = " "
