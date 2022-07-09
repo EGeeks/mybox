@@ -10,6 +10,8 @@ VIRTUAL-RUNTIME_login_manager ?= "busybox"
 # VIRTUAL-RUNTIME_init_manager ?= "busybox"
 VIRTUAL-RUNTIME_initscripts ?= "initscripts"
 
+IMAGE_FEATURES = "debug-tweaks "
+
 IMAGE_INSTALL = " \
 	base-files \
 	shadow \
@@ -19,6 +21,7 @@ IMAGE_INSTALL = " \
 	${VIRTUAL-RUNTIME_initscripts} \
 	modutils-initscripts \
 	init-ifupdown \
+	dropbear \
 "
 
 IMAGE_LINGUAS = " "
