@@ -22,6 +22,8 @@ IMAGE_INSTALL = " \
 	modutils-initscripts \
 	init-ifupdown \
 	dropbear \
+	gdb \
+	gdbserver \
 "
 
 IMAGE_LINGUAS = " "
