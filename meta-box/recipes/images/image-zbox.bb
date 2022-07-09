@@ -24,6 +24,8 @@ IMAGE_INSTALL = " \
 	dropbear \
 	gdb \
 	gdbserver \
+	iperf3 \
+	htop \
 "
 
 IMAGE_LINGUAS = " "
