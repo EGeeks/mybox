@@ -26,6 +26,7 @@ IMAGE_INSTALL = " \
 	gdbserver \
 	iperf3 \
 	htop \
+	usbutils \
 "
 
 IMAGE_LINGUAS = " "
