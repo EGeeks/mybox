@@ -5,9 +5,9 @@ LICENSE = "close"
 inherit image extrausers
 
 # Distro can override the following VIRTUAL-RUNTIME providers:
-VIRTUAL-RUNTIME_dev_manager ?= "busybox-mdev"
+VIRTUAL-RUNTIME_dev_manager ?= "busybox"
 VIRTUAL-RUNTIME_login_manager ?= "busybox"
-VIRTUAL-RUNTIME_init_manager ?= "busybox"
+# VIRTUAL-RUNTIME_init_manager ?= "busybox"
 VIRTUAL-RUNTIME_initscripts ?= "initscripts"
 
 IMAGE_INSTALL = " \
@@ -22,3 +22,5 @@ IMAGE_INSTALL = " \
 "
 
 IMAGE_LINGUAS = " "
+
+IMAGE_FSTYPES += " tar.gz "
