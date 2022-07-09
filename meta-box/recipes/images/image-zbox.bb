@@ -27,6 +27,8 @@ IMAGE_INSTALL = " \
 	iperf3 \
 	htop \
 	usbutils \
+	json-c \
+	sqlite3 \
 "
 
 IMAGE_LINGUAS = " "
