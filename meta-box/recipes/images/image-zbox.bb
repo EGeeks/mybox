@@ -27,8 +27,11 @@ IMAGE_INSTALL = " \
 	iperf3 \
 	htop \
 	usbutils \
+	iproute2 \
 	json-c \
 	sqlite3 \
+	libdrm \
+	libdrm-tests \
 "
 
 IMAGE_LINGUAS = " "
