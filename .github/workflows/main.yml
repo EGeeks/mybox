@@ -41,6 +41,8 @@ jobs:
             mkdir -p ${GITHUB_WORKSPACE}/../yocto-build-cache/images
             cd ${GITHUB_WORKSPACE}
 
+            rm ${GITHUB_WORKSPACE}/../yocto-build-cache/images/zbox-hd/* -rf
+
             export MACHINE=zbox-hd
             export TEMPLATECONF=${GITHUB_WORKSPACE}/meta-box/conf
   
