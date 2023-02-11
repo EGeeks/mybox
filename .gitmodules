@@ -7,3 +7,7 @@
 [submodule "meta-sunxi"]
 	path = meta-sunxi
 	url = git@github.com:linux-sunxi/meta-sunxi.git
+[submodule "meta-rockchip"]
+	path = meta-rockchip
+	url = git@github.com:radxa/meta-rockchip.git
+	branch = kirkstone-radxa
